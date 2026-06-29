@@ -7,8 +7,6 @@
     emails: ["augoudi@gmail.com", "Gregoires2580@gmail.com"],
     heroPhoto: "pics/4S9A3896.jpg.jpeg",
     photos: [
-      "pics/4S9A3822.jpg.jpeg",
-      "pics/4S9A3876.jpg.jpeg",
       "pics/4S9A3885.jpg.jpeg",
       "pics/4S9A3891.jpg.jpeg",
       "pics/4S9A3896.jpg.jpeg",
