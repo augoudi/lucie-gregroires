@@ -31,7 +31,7 @@
 
   const i18n = {
     fr: {
-      "nav.home": "Accueil", "nav.program": "Programme", "nav.story": "Galerie", "nav.rsvp": "RSVP", "nav.dashboard": "Admin",
+      "nav.home": "Accueil", "nav.program": "Programme", "nav.story": "Galerie", "nav.rsvp": "RSVP", "nav.souvenir": "Cadre Souvenir", "nav.dashboard": "Admin",
       "hero.blessing": "Avec la bénédiction de leurs familles",
       "hero.families": "Allah Lame Lucien & Kitikil Joseph",
       "hero.invite": "Ont l'immense joie de vous inviter à célébrer leur union sacramentelle, le Samedi 01 Août 2026 à Maroua, Extrême-Nord — Cameroun.",
@@ -63,9 +63,17 @@
       "dash.export": "Exporter CSV",
       "footer.dress": "Tenue & Billet Exigés", "footer.meta": "01 Août 2026 · Maroua, Cameroun",
       "badge.yes": "Présent", "badge.no": "Absent",
+      "souvenir.eyebrow": "Un souvenir à garder",
+      "souvenir.title": "Votre cadre du 01 Août",
+      "souvenir.intro": "Immortalisez ce jour inoubliable. Uploadez votre photo et téléchargez-la avec le cadre officiel du mariage de Lucie & Grégroires.",
+      "souvenir.upload": "Choisir ma photo",
+      "souvenir.formats": "JPG · PNG · WEBP · Max 10MB",
+      "souvenir.download": "⬇ Télécharger mon souvenir",
+      "souvenir.reset": "Changer de photo",
+      "souvenir.preview": "L'aperçu de votre photo encadrée apparaîtra ici",
     },
     en: {
-      "nav.home": "Home", "nav.program": "Schedule", "nav.story": "Gallery", "nav.rsvp": "RSVP", "nav.dashboard": "Admin",
+      "nav.home": "Home", "nav.program": "Schedule", "nav.story": "Gallery", "nav.rsvp": "RSVP", "nav.souvenir": "Photo Frame", "nav.dashboard": "Admin",
       "hero.blessing": "With the blessing of their families",
       "hero.families": "Allah Lame Lucien & Kitikil Joseph",
       "hero.invite": "Have the great joy of inviting you to celebrate their sacramental union on Saturday, August 1, 2026 in Maroua, Far North — Cameroon.",
@@ -97,6 +105,14 @@
       "dash.export": "Export CSV",
       "footer.dress": "Formal Attire & Ticket Required", "footer.meta": "August 1, 2026 · Maroua, Cameroon",
       "badge.yes": "Attending", "badge.no": "Declined",
+      "souvenir.eyebrow": "A keepsake to treasure",
+      "souvenir.title": "Your August 1st Frame",
+      "souvenir.intro": "Capture this unforgettable day. Upload your photo and download it with the official Lucie & Grégroires wedding frame.",
+      "souvenir.upload": "Choose my photo",
+      "souvenir.formats": "JPG · PNG · WEBP · Max 10MB",
+      "souvenir.download": "⬇ Download my keepsake",
+      "souvenir.reset": "Change photo",
+      "souvenir.preview": "Your framed photo preview will appear here",
     },
   };
 

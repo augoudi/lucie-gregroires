@@ -20,6 +20,7 @@
         <li><a href="#programme" data-i18n="nav.program">Programme</a></li>
         <li><a href="#galerie" data-i18n="nav.story">Galerie</a></li>
         <li><a href="#rsvp" data-i18n="nav.rsvp">RSVP</a></li>
+        <li><a href="#souvenir" data-i18n="nav.souvenir">Cadre Souvenir</a></li>
         <li><a href="#dashboard" data-i18n="nav.dashboard">Admin</a></li>
       </ul>
       <div class="nav-actions">
@@ -316,6 +317,46 @@
     </div>
   </section>
 
+  <!-- ═══ CADRE SOUVENIR ═══ -->
+  <section id="souvenir" class="section-souvenir">
+    <div class="souvenir-inner">
+      <p class="section-eyebrow reveal" data-i18n="souvenir.eyebrow">Un souvenir à garder</p>
+      <h2 class="section-title reveal" data-i18n="souvenir.title">Votre cadre du 01 Août</h2>
+
+      <div class="gold-divider reveal">
+        <div class="line"></div><div class="diamond"></div><div class="line"></div>
+      </div>
+
+      <p class="souvenir-intro reveal" data-i18n="souvenir.intro">
+        Immortalisez ce jour inoubliable. Uploadez votre photo et téléchargez-la avec le cadre officiel du mariage de Lucie &amp; Grégroires.
+      </p>
+
+      <div id="souvenir-layout" class="reveal">
+        <div>
+          <div id="upload-zone">
+            <input type="file" id="photo-input" accept="image/jpeg,image/png,image/webp" />
+            <div class="upload-icon" aria-hidden="true">📷</div>
+            <span class="upload-label" data-i18n="souvenir.upload">Choisir ma photo</span>
+            <span class="upload-hint" data-i18n="souvenir.formats">JPG · PNG · WEBP · Max 10MB</span>
+          </div>
+
+          <div id="file-info"></div>
+
+          <button type="button" id="dl-btn" data-i18n="souvenir.download">⬇ Télécharger mon souvenir</button>
+          <button type="button" id="reset-btn" data-i18n="souvenir.reset">Changer de photo</button>
+        </div>
+
+        <div>
+          <div id="canvas-placeholder">
+            <span aria-hidden="true">🖼️</span>
+            <p data-i18n="souvenir.preview">L'aperçu de votre photo encadrée apparaîtra ici</p>
+          </div>
+          <canvas id="frame-canvas" width="800" height="800"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══ FOOTER — ruban rose du faire-part ═══ -->
   <footer class="site-footer">
     <p class="footer-card">Lucie & Grégroires</p>
@@ -324,5 +365,6 @@
   </footer>
 
   <script src="js/app.js"></script>
+  <script src="js/souvenir.js"></script>
 </body>
 </html>
