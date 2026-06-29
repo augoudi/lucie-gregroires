@@ -377,9 +377,43 @@ a:hover { color: var(--brown); }
   border: none; cursor: pointer; text-decoration: none;
 }
 .btn-whatsapp svg { width: 20px; height: 20px; fill: currentColor; }
-.rsvp-success { display: none; text-align: center; padding: 2rem 0; }
-.rsvp-success.show { display: block; }
-.success-title { font-family: var(--font-script); font-size: 2.25rem; color: var(--gold); }
+    .rsvp-success { display: none; text-align: center; padding: 2rem 0; }
+    .rsvp-success.show { display: block; }
+    .success-title { font-family: var(--font-script); font-size: 2.25rem; color: var(--gold); }
+    .rsvp-error {
+      display: none;
+      text-align: center;
+      margin-top: .75rem;
+      font-family: var(--font-body);
+      font-style: italic;
+      color: var(--rose);
+      font-size: .95rem;
+    }
+    .rsvp-error.show { display: block; }
+    .dash-netlify-note {
+      margin-top: 1.5rem;
+      padding: 1rem 1.25rem;
+      border: 1px solid var(--gold-light);
+      background: var(--white);
+      font-family: var(--font-body);
+      font-style: italic;
+      font-size: .95rem;
+      color: var(--text-soft);
+      text-align: center;
+      line-height: 1.6;
+    }
+    .dash-netlify-note a { color: var(--rose); text-decoration: underline; }
+
+@keyframes petalOpen { 0%{transform:scaleY(0)} 100%{transform:scaleY(1)} }
+.success-flower { width: 80px; height: 80px; margin: 0 auto 1.5rem; }
+.success-flower .petal { transform-origin: center bottom; animation: petalOpen .8s ease both; }
+.success-flower .petal:nth-child(2) { animation-delay: .15s; }
+.success-flower .petal:nth-child(3) { animation-delay: .3s; }
+.success-flower .petal:nth-child(4) { animation-delay: .45s; }
+.success-flower .petal:nth-child(5) { animation-delay: .6s; }
+.success-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: calc(var(--header-h) + 2rem) 1rem 3rem; }
+.success-card { max-width: 560px; width: 100%; text-align: center; }
+.success-text { font-family: var(--font-body); font-style: italic; font-size: 1.1rem; color: var(--text-soft); line-height: 1.85; margin: 1rem 0 2rem; }
 
 /* ── Dashboard ── */
 .dashboard-lock { max-width: 340px; margin: 0 auto; text-align: center; }

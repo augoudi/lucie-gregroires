@@ -51,7 +51,9 @@
       "rsvp.guests": "Nombre de personnes", "rsvp.message": "Message pour les mariés",
       "rsvp.submit": "Envoyer ma confirmation", "rsvp.or": "OU", "rsvp.whatsapp": "Confirmer via WhatsApp",
       "rsvp.success.title": "Merci !",
-      "rsvp.success.text": "Votre confirmation a été enregistrée. Votre messagerie va s'ouvrir pour envoyer la confirmation à Lucie et Grégroires.",
+      "rsvp.success.text": "Votre réponse a bien été transmise à Lucie & Grégroires. Ils vous attendent avec impatience le 01 Août 2026.",
+      "rsvp.error": "Une erreur est survenue. Veuillez réessayer.",
+      "dash.netlify": "Les réponses complètes sont également disponibles sur",
       "dash.lock": "Accès réservé aux mariés", "dash.placeholder": "Mot de passe", "dash.unlock": "Accéder", "dash.error": "Mot de passe incorrect",
       "dash.total": "Réponses", "dash.yes": "Présents", "dash.no": "Absents", "dash.guests": "Personnes",
       "dash.col.name": "Nom", "dash.col.phone": "Téléphone", "dash.col.attend": "Présence", "dash.col.nb": "Nb", "dash.col.msg": "Message", "dash.col.date": "Date",
@@ -80,7 +82,9 @@
       "rsvp.guests": "Number of guests", "rsvp.message": "Message for the couple",
       "rsvp.submit": "Send confirmation", "rsvp.or": "OR", "rsvp.whatsapp": "Confirm via WhatsApp",
       "rsvp.success.title": "Thank you!",
-      "rsvp.success.text": "Your confirmation has been saved. Your email app will open to send the confirmation to Lucie and Grégroires.",
+      "rsvp.success.text": "Your response has been sent to Lucie & Grégroires. They look forward to seeing you on August 1, 2026.",
+      "rsvp.error": "Something went wrong. Please try again.",
+      "dash.netlify": "Full responses are also available on",
       "dash.lock": "Access for the couple only", "dash.placeholder": "Password", "dash.unlock": "Enter", "dash.error": "Incorrect password",
       "dash.total": "Responses", "dash.yes": "Attending", "dash.no": "Declined", "dash.guests": "Guests",
       "dash.col.name": "Name", "dash.col.phone": "Phone", "dash.col.attend": "Status", "dash.col.nb": "Nb", "dash.col.msg": "Message", "dash.col.date": "Date",
@@ -104,6 +108,7 @@
     document.documentElement.lang = l;
     document.title = l === "fr" ? "Lucie & Grégroires — Mariage" : "Lucie & Grégroires — Wedding";
     document.querySelectorAll("[data-i18n]").forEach((el) => {
+      if (el.tagName === "A" && el.closest(".dash-netlify-note")) return;
       el.textContent = t(el.dataset.i18n);
     });
     document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
@@ -155,46 +160,6 @@
   function photoUrl(path) {
     const parts = path.split("/");
     return parts[0] + "/" + parts.slice(1).map(encodeURIComponent).join("/");
-  }
-
-  function buildRsvpEmailBody(entry) {
-    const attend =
-      entry.attendance === "yes"
-        ? lang === "fr" ? "Présent(e)" : "Attending"
-        : lang === "fr" ? "Absent(e)" : "Not attending";
-    const lines =
-      lang === "fr"
-        ? [
-            "RSVP — Mariage Lucie & Grégroires",
-            "Date : Samedi 01 Août 2026 — Maroua, Cameroun",
-            "",
-            "Prénom : " + entry.firstName,
-            "Nom : " + entry.lastName,
-            "Téléphone : " + entry.phone,
-            "Présence : " + attend,
-          ]
-        : [
-            "RSVP — Lucie & Grégroires Wedding",
-            "Date : Saturday, August 1, 2026 — Maroua, Cameroon",
-            "",
-            "First name : " + entry.firstName,
-            "Last name : " + entry.lastName,
-            "Phone : " + entry.phone,
-            "Attendance : " + attend,
-          ];
-    if (entry.attendance === "yes") {
-      lines.push((lang === "fr" ? "Nombre de personnes : " : "Number of guests : ") + entry.guests);
-    }
-    if (entry.message) lines.push((lang === "fr" ? "Message : " : "Message : ") + entry.message);
-    lines.push("", (lang === "fr" ? "Envoyé le : " : "Sent on : ") + entry.date);
-    return lines.join("\n");
-  }
-
-  function sendRsvpEmail(entry) {
-    const to = CONFIG.emails.map(encodeURIComponent).join(",");
-    const subject = encodeURIComponent("[RSVP] " + entry.firstName + " " + entry.lastName + " — Lucie & Grégroires");
-    const body = encodeURIComponent(buildRsvpEmailBody(entry));
-    window.location.href = "mailto:" + to + "?subject=" + subject + "&body=" + body;
   }
 
   function updateWhatsAppLink() {
@@ -337,31 +302,60 @@
       document.querySelectorAll(".attendance-btn").forEach((b) => b.classList.remove("selected"));
       btn.classList.add("selected");
       attendance = btn.dataset.value;
-      document.getElementById("guestsRow").classList.toggle("show", attendance === "yes");
+      document.getElementById("presenceField").value = btn.textContent.trim();
+      document.getElementById("guestsRow").classList.toggle("show", attendance === "oui");
+      if (attendance !== "oui") {
+        document.getElementById("nombre_personnes").value = "0";
+      } else {
+        document.getElementById("nombre_personnes").value = "1";
+      }
     });
   });
 
   document.getElementById("rsvpForm").addEventListener("submit", (e) => {
     e.preventDefault();
-    if (!attendance) {
-      alert(lang === "fr" ? "Veuillez indiquer votre présence." : "Please indicate your attendance.");
+    const form = e.target;
+    const errorEl = document.getElementById("rsvpError");
+    errorEl.classList.remove("show");
+
+    const prenom = document.getElementById("prenom").value.trim();
+    const nom = document.getElementById("nom").value.trim();
+    const presence = document.getElementById("presenceField").value.trim();
+
+    if (!prenom || !nom || !presence) {
+      alert(lang === "fr" ? "Veuillez remplir le prénom, le nom et indiquer votre présence." : "Please fill in first name, last name and attendance.");
       return;
     }
-    const entry = {
-      firstName: document.getElementById("firstName").value.trim(),
-      lastName: document.getElementById("lastName").value.trim(),
-      phone: document.getElementById("phone").value.trim(),
-      attendance,
-      guests: attendance === "yes" ? document.getElementById("guests").value : "0",
-      message: document.getElementById("message").value.trim(),
-      date: new Date().toLocaleString(lang === "fr" ? "fr-FR" : "en-GB"),
-    };
-    const all = getRsvps();
-    all.push(entry);
-    saveRsvps(all);
-    document.getElementById("rsvpForm").style.display = "none";
-    document.getElementById("rsvpSuccess").classList.add("show");
-    setTimeout(() => sendRsvpEmail(entry), 600);
+
+    if (attendance !== "oui") {
+      document.getElementById("nombre_personnes").value = "0";
+    }
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(new FormData(form)).toString(),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("Netlify form error");
+        const entry = {
+          firstName: prenom,
+          lastName: nom,
+          phone: document.getElementById("telephone").value.trim(),
+          attendance: attendance === "oui" ? "yes" : "no",
+          guests: attendance === "oui" ? document.getElementById("nombre_personnes").value : "0",
+          message: document.getElementById("message").value.trim(),
+          date: new Date().toLocaleString(lang === "fr" ? "fr-FR" : "en-GB"),
+        };
+        const all = getRsvps();
+        all.push(entry);
+        saveRsvps(all);
+        form.style.display = "none";
+        document.getElementById("rsvpSuccess").classList.add("show");
+      })
+      .catch(() => {
+        errorEl.classList.add("show");
+      });
   });
 
   document.getElementById("dashUnlock").addEventListener("click", () => {
