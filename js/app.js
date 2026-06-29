@@ -33,7 +33,7 @@
     fr: {
       "nav.home": "Accueil", "nav.program": "Programme", "nav.story": "Galerie", "nav.rsvp": "RSVP", "nav.dashboard": "Admin",
       "hero.blessing": "Avec la bénédiction de leurs familles",
-      "hero.family1": "Allah Lame Lucien", "hero.family2": "Kitikil Joseph",
+      "hero.families": "Allah Lame Lucien & Kitikil Joseph",
       "hero.invite": "Ont l'immense joie de vous inviter à célébrer leur union sacramentelle, le Samedi 01 Août 2026 à Maroua, Extrême-Nord — Cameroun.",
       "hero.cta": "Confirmer ma présence", "hero.scroll": "Défiler",
       "cd.days": "Jours", "cd.hours": "Heures", "cd.mins": "Minutes", "cd.secs": "Secondes",
@@ -42,7 +42,7 @@
       "evt.religious.title": "Cérémonie Religieuse", "evt.religious.place": "Paroisse Saint Jean de Djarengol",
       "evt.vin.title": "Vin d'Honneur", "evt.vin.place": "Quartier Zokok-Laddeo", "evt.vin.note": "Offert par la famille de la mariée",
       "evt.reception.title": "Réception", "evt.reception.place": "Salle de fête de l'Hôtel Shalom", "evt.reception.note": "Offerte par le couple",
-      "story.title": "Nos Souvenirs", "story.sub": "Lucie & Grégoire",
+      "story.title": "Nos Souvenirs", "story.sub": "Lucie & Grégroires",
       "quote.text": "Parce que chaque grande histoire mérite ses témoins… venez écrire avec nous le premier chapitre de notre éternité.",
       "rsvp.title": "Confirmez votre présence", "rsvp.intro": "Votre présence sera notre plus beau cadeau. Merci de répondre avant le",
       "rsvp.deadline": "15 Juillet 2026",
@@ -51,7 +51,7 @@
       "rsvp.guests": "Nombre de personnes", "rsvp.message": "Message pour les mariés",
       "rsvp.submit": "Envoyer ma confirmation", "rsvp.or": "OU", "rsvp.whatsapp": "Confirmer via WhatsApp",
       "rsvp.success.title": "Merci !",
-      "rsvp.success.text": "Votre confirmation a été enregistrée. Votre messagerie va s'ouvrir pour envoyer la confirmation à Lucie et Grégoire.",
+      "rsvp.success.text": "Votre confirmation a été enregistrée. Votre messagerie va s'ouvrir pour envoyer la confirmation à Lucie et Grégroires.",
       "dash.lock": "Accès réservé aux mariés", "dash.placeholder": "Mot de passe", "dash.unlock": "Accéder", "dash.error": "Mot de passe incorrect",
       "dash.total": "Réponses", "dash.yes": "Présents", "dash.no": "Absents", "dash.guests": "Personnes",
       "dash.col.name": "Nom", "dash.col.phone": "Téléphone", "dash.col.attend": "Présence", "dash.col.nb": "Nb", "dash.col.msg": "Message", "dash.col.date": "Date",
@@ -62,7 +62,7 @@
     en: {
       "nav.home": "Home", "nav.program": "Schedule", "nav.story": "Gallery", "nav.rsvp": "RSVP", "nav.dashboard": "Admin",
       "hero.blessing": "With the blessing of their families",
-      "hero.family1": "Allah Lame Lucien", "hero.family2": "Kitikil Joseph",
+      "hero.families": "Allah Lame Lucien & Kitikil Joseph",
       "hero.invite": "Have the great joy of inviting you to celebrate their sacramental union on Saturday, August 1, 2026 in Maroua, Far North — Cameroon.",
       "hero.cta": "Confirm attendance", "hero.scroll": "Scroll",
       "cd.days": "Days", "cd.hours": "Hours", "cd.mins": "Minutes", "cd.secs": "Seconds",
@@ -71,7 +71,7 @@
       "evt.religious.title": "Religious Ceremony", "evt.religious.place": "Saint John of Djarengol Parish",
       "evt.vin.title": "Cocktail Hour", "evt.vin.place": "Zokok-Laddeo District", "evt.vin.note": "Hosted by the bride's family",
       "evt.reception.title": "Reception", "evt.reception.place": "Hôtel Shalom Banquet Hall", "evt.reception.note": "Hosted by the couple",
-      "story.title": "Our Memories", "story.sub": "Lucie & Grégoire",
+      "story.title": "Our Memories", "story.sub": "Lucie & Grégroires",
       "quote.text": "Because every great story deserves its witnesses… come write the first chapter of our eternity with us.",
       "rsvp.title": "Confirm your attendance", "rsvp.intro": "Your presence is our greatest gift. Please respond before",
       "rsvp.deadline": "July 15, 2026",
@@ -80,7 +80,7 @@
       "rsvp.guests": "Number of guests", "rsvp.message": "Message for the couple",
       "rsvp.submit": "Send confirmation", "rsvp.or": "OR", "rsvp.whatsapp": "Confirm via WhatsApp",
       "rsvp.success.title": "Thank you!",
-      "rsvp.success.text": "Your confirmation has been saved. Your email app will open to send the confirmation to Lucie and Grégoire.",
+      "rsvp.success.text": "Your confirmation has been saved. Your email app will open to send the confirmation to Lucie and Grégroires.",
       "dash.lock": "Access for the couple only", "dash.placeholder": "Password", "dash.unlock": "Enter", "dash.error": "Incorrect password",
       "dash.total": "Responses", "dash.yes": "Attending", "dash.no": "Declined", "dash.guests": "Guests",
       "dash.col.name": "Name", "dash.col.phone": "Phone", "dash.col.attend": "Status", "dash.col.nb": "Nb", "dash.col.msg": "Message", "dash.col.date": "Date",
@@ -102,7 +102,7 @@
     lang = l;
     localStorage.setItem("lg-lang", l);
     document.documentElement.lang = l;
-    document.title = l === "fr" ? "Lucie & Grégoire — Mariage" : "Lucie & Grégoire — Wedding";
+    document.title = l === "fr" ? "Lucie & Grégroires — Mariage" : "Lucie & Grégroires — Wedding";
     document.querySelectorAll("[data-i18n]").forEach((el) => {
       el.textContent = t(el.dataset.i18n);
     });
@@ -165,7 +165,7 @@
     const lines =
       lang === "fr"
         ? [
-            "RSVP — Mariage Lucie & Grégoire",
+            "RSVP — Mariage Lucie & Grégroires",
             "Date : Samedi 01 Août 2026 — Maroua, Cameroun",
             "",
             "Prénom : " + entry.firstName,
@@ -174,7 +174,7 @@
             "Présence : " + attend,
           ]
         : [
-            "RSVP — Lucie & Grégoire Wedding",
+            "RSVP — Lucie & Grégroires Wedding",
             "Date : Saturday, August 1, 2026 — Maroua, Cameroon",
             "",
             "First name : " + entry.firstName,
@@ -192,7 +192,7 @@
 
   function sendRsvpEmail(entry) {
     const to = CONFIG.emails.map(encodeURIComponent).join(",");
-    const subject = encodeURIComponent("[RSVP] " + entry.firstName + " " + entry.lastName + " — Lucie & Grégoire");
+    const subject = encodeURIComponent("[RSVP] " + entry.firstName + " " + entry.lastName + " — Lucie & Grégroires");
     const body = encodeURIComponent(buildRsvpEmailBody(entry));
     window.location.href = "mailto:" + to + "?subject=" + subject + "&body=" + body;
   }
@@ -200,8 +200,8 @@
   function updateWhatsAppLink() {
     const msg =
       lang === "fr"
-        ? "Bonjour, je confirme ma présence au mariage de Lucie & Grégoire le 01 Août 2026 à Maroua."
-        : "Hello, I confirm my attendance at Lucie & Grégoire's wedding on August 1, 2026 in Maroua.";
+        ? "Bonjour, je confirme ma présence au mariage de Lucie & Grégroires le 01 Août 2026 à Maroua."
+        : "Hello, I confirm my attendance at Lucie & Grégroires's wedding on August 1, 2026 in Maroua.";
     document.getElementById("whatsappBtn").href =
       "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(msg);
   }
@@ -211,7 +211,7 @@
     CONFIG.photos.forEach((src) => {
       const el = document.createElement("img");
       el.src = photoUrl(src);
-      el.alt = "Lucie & Grégoire";
+      el.alt = "Lucie & Grégroires";
       el.loading = "lazy";
       el.onerror = function () {
         this.remove();
