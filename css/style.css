@@ -289,9 +289,13 @@ a:hover { color: var(--brown); }
   height: 56px;
   display: block;
   margin: 0 auto;
+  cursor: default !important;
   filter: brightness(0) saturate(100%)
           invert(62%) sepia(55%) saturate(400%)
           hue-rotate(5deg) brightness(95%);
+}
+.event-icon:hover {
+  transform: none !important;
 }
 .event-info h3 {
   font-family: var(--font-display);

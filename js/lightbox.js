@@ -10,14 +10,30 @@
   let images = [];
   let currentIndex = 0;
 
+  function isZoomableImg(img) {
+    if (!img || !img.src) return false;
+    if (img.id === "lightbox-img") return false;
+    if (img.classList.contains("event-icon")) return false;
+    const src = img.src.toLowerCase();
+    if (src.includes("logo_01_mairie")) return false;
+    if (src.includes("logo_02_eglise")) return false;
+    if (src.includes("logo_03_verres")) return false;
+    if (src.includes("logo_04_banquet")) return false;
+    if (src.endsWith(".svg")) return false;
+    return true;
+  }
+
   function getGalleryImages() {
-    return Array.from(document.querySelectorAll("img")).filter(
-      (img) => img.id !== "lightbox-img" && img.src
-    );
+    return Array.from(document.querySelectorAll("img")).filter(isZoomableImg);
   }
 
   function bindImg(img) {
-    if (img.id === "lightbox-img" || img.dataset.lightboxBound === "1") return;
+    if (!isZoomableImg(img)) {
+      img.classList.remove("zoomable-img");
+      img.style.cursor = "";
+      return;
+    }
+    if (img.dataset.lightboxBound === "1") return;
     img.dataset.lightboxBound = "1";
     img.classList.add("zoomable-img");
     img.addEventListener("click", function (e) {
@@ -30,6 +46,12 @@
   }
 
   function initImages() {
+    document.querySelectorAll("img").forEach((img) => {
+      if (!isZoomableImg(img)) {
+        img.classList.remove("zoomable-img");
+        img.style.cursor = "";
+      }
+    });
     images = getGalleryImages();
     images.forEach(bindImg);
   }
@@ -124,8 +146,7 @@
   lightboxImg.addEventListener("click", (e) => e.stopPropagation());
 
   const observer = new MutationObserver(() => {
-    images = getGalleryImages();
-    images.forEach(bindImg);
+    initImages();
   });
   observer.observe(document.body, { childList: true, subtree: true });
 
