@@ -18,6 +18,7 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="#accueil" data-i18n="nav.home">Accueil</a></li>
         <li><a href="#programme" data-i18n="nav.program">Programme</a></li>
+        <li><a href="#dress-code" data-i18n="nav.dress">Code Couleurs</a></li>
         <li><a href="#galerie" data-i18n="nav.story">Galerie</a></li>
         <li><a href="#rsvp" data-i18n="nav.rsvp">RSVP</a></li>
         <li><a href="#souvenir" data-i18n="nav.souvenir">Cadre Souvenir</a></li>
@@ -180,6 +181,41 @@
           <p class="punctuality-sign" data-i18n="punct.sign">— Lucie &amp; Grégroires</p>
         </aside>
       </div>
+    </div>
+  </section>
+
+  <!-- ═══ CODE COULEURS ═══ -->
+  <section id="dress-code" class="section-dress-code">
+    <div class="dress-code-inner">
+      <p class="section-eyebrow reveal" data-i18n="dress.eyebrow">Pour cette journée</p>
+      <h2 class="section-title reveal" data-i18n="dress.title">Code Couleurs</h2>
+
+      <div class="gold-divider reveal">
+        <div class="line"></div><div class="diamond"></div><div class="line"></div>
+      </div>
+
+      <p class="dress-code-intro reveal" data-i18n="dress.intro">
+        Nous serions honorés que vous vous joigniez à l'harmonie de nos couleurs pour cette journée.
+      </p>
+
+      <div class="color-palette reveal">
+        <div class="color-swatch">
+          <div class="color-circle color-rose"></div>
+          <span data-i18n="dress.rose">Rose Poudré</span>
+        </div>
+        <div class="color-swatch">
+          <div class="color-circle color-white"></div>
+          <span data-i18n="dress.white">Blanc</span>
+        </div>
+        <div class="color-swatch">
+          <div class="color-circle color-gold"></div>
+          <span data-i18n="dress.gold">Or</span>
+        </div>
+      </div>
+
+      <p class="dress-code-note reveal" data-i18n="dress.note">
+        Toute nuance de rose poudré, blanc ou doré sera la bienvenue dans votre tenue.
+      </p>
     </div>
   </section>
 
@@ -364,7 +400,13 @@
     <div class="footer-ribbon" data-i18n="footer.dress">Tenue & Billet Exigés</div>
   </footer>
 
+  <div id="lightbox-overlay" class="lightbox-overlay" aria-hidden="true">
+    <img id="lightbox-img" src="" alt="" />
+    <button type="button" id="lightbox-close" class="lightbox-close" aria-label="Fermer">×</button>
+  </div>
+
   <script src="js/app.js"></script>
   <script src="js/souvenir.js"></script>
+  <script src="js/lightbox.js"></script>
 </body>
 </html>
